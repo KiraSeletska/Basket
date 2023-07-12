@@ -1,0 +1,15 @@
+.container {
+  padding: 5% 20% 0 20%;
+  display: grid;
+  gap: 10%;
+  grid-template-columns: 1fr 1fr;
+}
+.categoryContainer {
+  border: 1px solid #000000;
+  text-align: center;
+  padding: 20px 5px;
+}
+
+h1 {
+  padding-left: 20%;
+}

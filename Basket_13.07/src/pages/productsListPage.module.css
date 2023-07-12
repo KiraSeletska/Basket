@@ -1,0 +1,5 @@
+.productsContainer {
+  padding: 50px;
+  display: flex;
+  gap: 25px;
+}
