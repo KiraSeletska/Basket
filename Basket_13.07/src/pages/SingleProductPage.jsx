@@ -27,16 +27,15 @@ export const SingleProductPage = () => {
       return;
     }
 
-if (totalProducts.find((el) => el.id === idEl) === undefined){
-  dispatch(addProductToBasket(newPproduct))
-  dispatch(countTotalPrice());
-  dispatch(countTotalProducts());
-} else {
-  dispatch(addQuantityToProduct(idEl))
-  dispatch(countTotalPrice());
-  dispatch(countTotalProducts());
-}
-  
+    if (totalProducts.find((el) => el.id === idEl) === undefined) {
+      dispatch(addProductToBasket(newPproduct));
+      dispatch(countTotalPrice());
+      dispatch(countTotalProducts());
+    } else {
+      dispatch(addQuantityToProduct(idEl));
+      dispatch(countTotalPrice());
+      dispatch(countTotalProducts());
+    }
   };
 
   return (

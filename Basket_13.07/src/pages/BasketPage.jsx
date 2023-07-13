@@ -9,10 +9,18 @@ import {
   deletQuantityToProduct
 } from "../redux/basketSlice";
 
+
+export const getRandomID = () => {
+  const min = 0;
+  const max = 1679615;
+  let int = Math.floor(Math.random() * (max - min + 1)) + min;
+  return int.toString(36);
+};
+
 export const BasketPage = () => {
   const totalPrice = useSelector((state) => state.basket.totalPrice);
   const totalProducts = useSelector((state) => state.basket.products)
-const totalPropuctsPrice = useSelector((state) => state.basket.totalProducts)
+const totalPropucts = useSelector((state) => state.basket.totalProducts)
   const dispatch = useDispatch();
 
   const cleatBascetHandler = () => {
@@ -39,22 +47,23 @@ const totalPropuctsPrice = useSelector((state) => state.basket.totalProducts)
   };
 
 
-   {/*deletProduct={() => deletProduct(product.id)}*/}
+//deletProduct={() => deletProduct(product.id)}
+//  decreasePropduct={() => decreaseQuantityPropduct(product.id)}
   return (
     <div>
       <div>
         {totalProducts  && totalProducts.map((product) => (
           <ProductInBasket
-            key={product.id}
+            key={getRandomID()}
             {...product}
             addPropductToBascet={() => addQuantityPropductToBascet(product.id)}
             decreasePropduct={() => decreaseQuantityPropduct(product.id)}
-           
+            deletProduct={()=>{deletProduct(product.id)}}
           />
         ))}
       </div>
-      <p>Всего товаров в корзине: {totalPropuctsPrice}</p> 
-      <h2> {totalPrice}</h2>{" "}
+      <p>Всего товаров в корзине  {totalPropucts}</p> 
+      <h2> на сумму: {totalPrice}</h2>{" "}
       <button onClick={() => cleatBascetHandler()}>Очистить корзину</button>
     </div>
   );

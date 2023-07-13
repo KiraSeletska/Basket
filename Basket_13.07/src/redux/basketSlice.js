@@ -17,12 +17,16 @@ const basketSlice = createSlice({
       state.products = [];
     },
     countTotalPrice: (state) => {
-      state.totalProducts = state.products.reduce((acc, el) => {
-        return acc + el.price;
+     // console.log('я не работаю')
+      
+      state.totalPrice = state.products.reduce((acc, el) => {
+      return el.price * el.quantity + acc;
       }, 0);
     },
     countTotalProducts: (state) => {
-      state.totalProducts = state.products.length;
+      state.totalProducts = state.products.reduce((acc, el) => {
+        return el.quantity + acc;
+        }, 0);
      
     },
     
@@ -35,10 +39,10 @@ const basketSlice = createSlice({
       state.products = [
         ...state.products.map((el) => {
           if (el.id === action.payload) {
-            console.log("1");
+            //console.log("1");
             return { ...el, quantity: el.quantity + 1 };
           } else {
-            console.log("2");
+          //  console.log("2");
             return el;
           }
         }),
@@ -50,7 +54,7 @@ const basketSlice = createSlice({
           if (el.id === action.payload) {
             return { ...el, quantity: el.quantity - 1 };
           }
-          return;
+          return el;
         }),
       ];
     },
