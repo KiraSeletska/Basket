@@ -5,6 +5,7 @@ import {
   addProductToBasket,
   countTotalPrice,
   addQuantityToProduct,
+  countTotalProducts,
 } from "../redux/basketSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -22,16 +23,18 @@ export const SingleProductPage = () => {
     if (totalProducts.length <= 0) {
       dispatch(addProductToBasket(newPproduct));
       dispatch(countTotalPrice());
+      dispatch(countTotalProducts());
       return;
     }
 
 if (totalProducts.find((el) => el.id === idEl) === undefined){
   dispatch(addProductToBasket(newPproduct))
   dispatch(countTotalPrice());
-  console.log('Не нашло, добавляю')
+  dispatch(countTotalProducts());
 } else {
   dispatch(addQuantityToProduct(idEl))
   dispatch(countTotalPrice());
+  dispatch(countTotalProducts());
 }
   
   };

@@ -16,14 +16,16 @@ const basketSlice = createSlice({
     cleanBasket: (state) => {
       state.products = [];
     },
-    countTotalPrice: (state, action) => {
-      state.totalPrice = state.products.reduce((acc, el) => {
+    countTotalPrice: (state) => {
+      state.totalProducts = state.products.reduce((acc, el) => {
         return acc + el.price;
       }, 0);
     },
-    countTotalProducts: (state, action) => {
+    countTotalProducts: (state) => {
       state.totalProducts = state.products.length;
+     
     },
+    
     deletPropductFromBasket: (state, action) => {
       state.products = [
         ...state.products.filter((el) => el.id !== action.payload),
